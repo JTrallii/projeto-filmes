@@ -1,0 +1,18 @@
+nav {
+  background-color: #232323;
+  height: 2rem;
+}
+.alinhamento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.listaStyle {
+  gap: 0.75rem;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: blue;
+}

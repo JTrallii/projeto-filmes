@@ -2,4 +2,44 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+.borda {
+  border: 1px solid red;
+}
+.App {
+  display: grid;
+  grid-template-columns: 1fr; /*uma coluna para aside e uma ara main*/
+  grid-template-rows: auto; /* altura miima de 100vh e altura maxima em auto*/
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+header {
+  grid-area: "header";
+}
+nav {
+  grid-area: "nav";
+}
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: "aside main aside";
+  gap: 0.5rem;
+}
+aside {
+  grid-area: "aside";
+}
+main {
+  grid-area: "main";
+}
+footer {
+  grid-area: "footer";
+}
+.app1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
