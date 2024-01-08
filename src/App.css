@@ -1,9 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Times New Roman", Times, serif;
-}
+
 .borda {
   border: 1px solid red;
 }
@@ -39,6 +34,7 @@ footer {
 }
 .app1 {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;

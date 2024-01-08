@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Pinóquio",
+    "id": 1,
+    "imdb": 5.9,
+    "lancamento": 2020,
+    "genero": "Drama, Fantasia",
+    "formato": "MKV",
+    "qualidade": "BluRay 1080p",
+    "audio": "Português",
+    "legenda": "Português",
+    "tamanho": "4.2GB, 10.GB",
+    "duracao": "2h 05 min",
+    "qualidadeAudio": "10",
+    "qualidadeVideo": "10",
+    "servidor": "Torrent",
+    "sinopse": "Quando o marceneiro Geppetto (Roberto Benigni) vê uma estrela cadente, ele deseja que o boneco que acabou de terminar, Pinóquio (Federico Ielapi), possa se tornar um garoto de verdade. À noite, a Fada Azul concede o desejo de Geppetto e pede ao Grilo Falante que sirva como a consciência do garoto de madeira. Mas o ingênuo e confiante Pinóquio tem uma limitação: Quando mente, seu nariz cresce."
+  },
+  {
+    "title": "Infiltrado",
+    "id": 2,
+    "imdb": 7.4,
+    "lancamento": 2021,
+    "genero": "Ação, Crime, Suspense",
+    "formato": "MKV",
+    "qualidade": "BluRay 1080p",
+    "audio": "Português, Inglês",
+    "legenda": "Português",
+    "tamanho": "2.6GB",
+    "duracao": "1h 58min",
+    "qualidadeAudio": "10",
+    "qualidadeVideo": "10",
+    "servidor": "Torrent",
+    "sinopse": "Harry, conhecido apenas como H, é um homem misterioso que trabalha para uma empresa de carros-fortes e movimenta grandes quantias de dinheiro pela cidade de Los Angeles. Quando, ao impedir um assalto, ele surpreende a todos com suas habilidades de combate, suas verdadeiras intenções começam a ser questionadas e um plano maior é revelado."
+  },
+  {
+    "title": "Coleção - Jogos Mortais",
+    "id": 3,
+    "imdb": 9,
+    "lancamento": 2019,
+    "genero": "Terror",
+    "formato": "MKV",
+    "qualidade": "BluRay 1080p",
+    "audio": "Português",
+    "legenda": "Português",
+    "tamanho": "2.8GB",
+    "duracao": "1h 30 min",
+    "qualidadeAudio": "9",
+    "qualidadeVideo": "10",
+    "servidor": "Torrent",
+    "sinopse": "Enquanto investigam os resultados sangrentos de um terrível assassinato, o Detetive Eric Mason tem a intuição de que trata-se de outro crime de Jigsaw, o notório assassino em série que desapareceu deixando um rastro de corpos e membros para trás. E Mason está certo. Jigsaw está agindo novamente. Mas, ao invés de duas pessoas trancadas numa sala com apenas uma impensável saída, há oito. Oito estranhos desavisados de sua ligação uns com os outros são forçados a entrar no jogo que desafia sua inteligência e coloca suas vidas em perigo."
+  }
+]

@@ -1,5 +1,5 @@
 .img {
   width: 15rem;
-  border: 0.5rem solid #323232;
+  border: 0.5rem solid var(--cor-cinza-escuro);
   border-radius: 0.8rem;
 }

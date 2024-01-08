@@ -1,0 +1,16 @@
+.display {
+  display: flex;
+}
+
+.mainContainer {
+  flex-direction: column;
+}
+.container {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+.text {
+  font-size: 1.3rem;
+  text-align: left;
+}

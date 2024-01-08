@@ -1,17 +1,23 @@
-import imgPrincipal from "./index.module.css";
+import React from "react";
+import imgPrincipal from "./imgPrincipal.module.css";
+import IImgPath from "interfaces/IImgPath";
+import { Link } from "react-router-dom";
 
 interface ImgPrincipalProps {
-  srcImg: string;
-  alt: string;
-  id: string;
+  IImgPath: IImgPath;
 }
 
-const ImgPrincipal: React.FC<ImgPrincipalProps> = ({ srcImg, alt, id }) => {
+export default function ImgPrincipal({ IImgPath }: ImgPrincipalProps) {
   return (
-    <>
-      <img className={imgPrincipal.img} src={srcImg} alt={alt} id={id} />
-    </>
+    <div>
+      <Link to={`/filme/${IImgPath.id}`}>
+        <img
+          className={imgPrincipal.img}
+          src={IImgPath.path}
+          alt={IImgPath.name}
+          id={IImgPath.id?.toString()}
+        />
+      </Link>
+    </div>
   );
-};
-
-export default ImgPrincipal;
+}
