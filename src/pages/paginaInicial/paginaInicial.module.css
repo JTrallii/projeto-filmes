@@ -2,6 +2,7 @@
   background-color: var(--cor-branco-claro);
   margin: 0 2rem;
   padding: 1rem;
+  border-radius: 2rem;
 }
 .container {
   display: flex;

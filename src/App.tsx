@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import PaginaInicial from "pages/paginaInicial/PaginaInicial";
 
 function App() {
   return (

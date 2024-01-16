@@ -1,0 +1,100 @@
+nav {
+  background-color: #232323;
+  height: 100%;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+nav ul li {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.mainContainer {
+  width: 100%;
+}
+
+.alinhamento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.listaStyle {
+  gap: 2rem;
+  list-style: none;
+}
+
+@media screen and (max-width: 320px) {
+  nav {
+    padding: 1rem;
+    margin: 0.2rem;
+  }
+  nav ul li {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 0.7rem;
+  }
+  .listaStyle {
+    gap: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 374px) {
+  nav {
+    padding: 1rem;
+    margin: 0.2rem;
+  }
+  nav ul li {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 0.9rem;
+  }
+  .listaStyle {
+    gap: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 424px) {
+  nav ul li {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 0.9rem;
+  }
+  .listaStyle {
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  nav {
+    padding: 1rem;
+    margin: 0.2rem;
+  }
+  nav ul li {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 0.9rem;
+  }
+  .listaStyle {
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  nav {
+    padding: 1rem;
+    margin: 0.2rem;
+  }
+  nav ul li {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 0.9rem;
+  }
+  .listaStyle {
+    gap: 1rem;
+  }
+}

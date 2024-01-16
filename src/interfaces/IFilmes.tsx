@@ -14,4 +14,5 @@ export default interface IFilmes {
   qualidadeVideo: string;
   servidor: string;
   sinopse: string;
+  trailer: string;
 }

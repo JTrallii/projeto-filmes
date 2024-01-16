@@ -1,90 +1,113 @@
-import styles from "./paginaFilme.module.css";
 import React from "react";
-import ImgPrincipal from "components/articleFilme/ImgPrincipal/ImgPrincipal";
-import IImgPath from "interfaces/IImgPath";
+import styles from "./paginaFilme.module.css";
+import ImgPrincipal from "components/ImgPrincipal/ImgPrincipal";
 import { useParams } from "react-router-dom";
 import listaFilmes from "data/filme.json";
 import caminhoImg from "data/caminhoImg";
+import UltimosLancamentos from "./filmesRelacionados/FilmesRelacionados";
+import FilmesRecomendados from "./filmesRecomendados/FilmesRecomendados";
+import Trailer from "./trailerFilme/TrailerFilme";
 
-interface PaginaFilmeProps {
-  IImgPath: IImgPath;
-}
-
-export default function PaginaFilme({ IImgPath }: PaginaFilmeProps) {
+export default function PaginaFilme() {
   const { id } = useParams();
-  const filme = listaFilmes.find((filme) => filme.id === Number(id));
-  const filmeId = caminhoImg.find((filmeId) => filmeId.id === Number(id));
-  if (filmeId) {
-    const imgPath: IImgPath = {
-      name: filmeId.name,
-      id: filmeId.id,
-      path: filmeId.path,
-    };
-    return (
-      <div className={styles.mainContainer}>
-        <div className={`${styles.container} ${styles.display}`}>
-          <ImgPrincipal IImgPath={imgPath} />
-          <div className={styles.text}>
-            <p>
-              <b>Título: </b>
-              {filme?.title}
-            </p>
-
-            <p>
-              <b>IMDb: </b>
-              <span>{filme?.imdb}</span>
-            </p>
-            <p>
-              <b>Lançamento:</b>
-              <span>{filme?.lancamento}</span>
-            </p>
-            <p>
-              <b>Gênero: </b>
-              <span>{filme?.genero}</span>
-            </p>
-            <p>
-              <b>Formato: </b>
-              <span>{filme?.formato}</span>
-            </p>
-            <p>
-              <b>Qualidade: </b>
-              <span>{filme?.qualidade}</span>
-            </p>
-            <p>
-              <b>Áudio: </b>
-              <span>{filme?.audio}</span>
-            </p>
-            <p>
-              <b>Legenda: </b>
-              <span>{filme?.legenda}</span>
-            </p>
-            <p>
-              <b>Tamanho: </b>
-              <span>{filme?.tamanho}</span>
-            </p>
-            <p>
-              <b>Duração: </b>
-              <span>{filme?.duracao}</span>
-            </p>
-            <p>
-              <b>Qualidade de Áudio: </b>
-              <span>{filme?.qualidadeAudio}</span>
-            </p>
-            <p>
-              <b>Qualidade de Video: </b>
-              <span>{filme?.qualidadeVideo}</span>
-            </p>
-            <p>
-              <b>Servidor: </b>
-              <span>{filme?.servidor}</span>
-            </p>
-            <p>
-              <b>Sinopse: </b>
-              <span>{filme?.sinopse}</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    );
+  const qtdFilmes = 4;
+  const filme = listaFilmes.find((f) => f.id === Number(id));
+  const imagemFiltradaId = caminhoImg.find(
+    (imagem) => imagem.id === Number(id)
+  );
+  if (!imagemFiltradaId || !filme) {
+    // Tratar o caso em que não há imagem filtrada para o ID
+    return <UltimosLancamentos qtdFilmes={qtdFilmes} />;
   }
+  if (!filme.trailer) {
+    return <span>Filme sem trailer</span>;
+  }
+  console.log(filme?.trailer);
+
+  return (
+    <main className={styles.main}>
+      <div className={styles.mainContainerLancamento}>
+        <aside className="">
+          <UltimosLancamentos qtdFilmes={qtdFilmes} />
+        </aside>
+
+        <section className={styles.mainContainer}>
+          <div className={`${styles.containerFilme} ${styles.display}`}>
+            <div
+              className={`${styles.containerFilmeDescricao} ${styles.display}`}
+            >
+              <ImgPrincipal IImgPath={imagemFiltradaId} />
+              <div className={styles.text}>
+                <p>
+                  <b>Título: </b>
+                  {filme?.title}
+                </p>
+
+                <p>
+                  <b>IMDb: </b>
+                  {filme?.imdb}
+                </p>
+                <p>
+                  <b>Lançamento: </b>
+                  {filme?.lancamento}
+                </p>
+                <p>
+                  <b>Gênero: </b>
+                  {filme?.genero}
+                </p>
+                <p>
+                  <b>Formato: </b>
+                  {filme?.formato}
+                </p>
+                <p>
+                  <b>Qualidade: </b>
+                  {filme?.qualidade}
+                </p>
+                <p>
+                  <b>Áudio: </b>
+                  {filme?.audio}
+                </p>
+                <p>
+                  <b>Legenda: </b>
+                  {filme?.legenda}
+                </p>
+                <p>
+                  <b>Tamanho: </b>
+                  {filme?.tamanho}
+                </p>
+                <p>
+                  <b>Duração: </b>
+                  {filme?.duracao}
+                </p>
+                <p>
+                  <b>Qualidade de Áudio: </b>
+                  {filme?.qualidadeAudio}
+                </p>
+                <p>
+                  <b>Qualidade de Video: </b>
+                  {filme?.qualidadeVideo}
+                </p>
+                <p>
+                  <b>Servidor: </b>
+                  {filme?.servidor}
+                </p>
+                <p>
+                  <b>Sinopse: </b>
+                  {filme?.sinopse}
+                </p>
+              </div>
+            </div>
+            <section>
+              <Trailer videoUrl={filme.trailer} />
+            </section>
+          </div>
+        </section>
+        <aside>
+          <FilmesRecomendados qtdFilmes={qtdFilmes} />
+        </aside>
+      </div>
+      <section>COMENTARIOS</section>
+      <footer>FOOTER</footer>
+    </main>
+  );
 }
