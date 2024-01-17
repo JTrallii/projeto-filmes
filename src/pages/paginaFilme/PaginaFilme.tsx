@@ -7,10 +7,12 @@ import caminhoImg from "data/caminhoImg";
 import UltimosLancamentos from "./filmesRelacionados/FilmesRelacionados";
 import FilmesRecomendados from "./filmesRecomendados/FilmesRecomendados";
 import Trailer from "./trailerFilme/TrailerFilme";
+import BotaoDownload from "./botaoDownload/BotaoDownload";
+import Comentarios from "./comentarios/Comentarios";
 
 export default function PaginaFilme() {
   const { id } = useParams();
-  const qtdFilmes = 4;
+  const qtdFilmes = 5;
   const filme = listaFilmes.find((f) => f.id === Number(id));
   const imagemFiltradaId = caminhoImg.find(
     (imagem) => imagem.id === Number(id)
@@ -99,6 +101,13 @@ export default function PaginaFilme() {
             </div>
             <section>
               <Trailer videoUrl={filme.trailer} />
+            </section>
+            <section className={`${styles.sectionDownload} ${styles.display}`}>
+              <h3 className={styles.download}>DOWNLOAD {filme.tamanho}</h3>
+              <BotaoDownload link={filme.trailer}>DOWNLOAD</BotaoDownload>
+            </section>
+            <section>
+              <Comentarios />
             </section>
           </div>
         </section>
