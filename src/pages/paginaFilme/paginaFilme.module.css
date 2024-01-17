@@ -64,4 +64,13 @@ footer {
 .text p b {
   font-weight: 900;
 }
-
+.sectionDownload {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sectionDownload h3 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  border-bottom: 0.1rem solid #1c2833;
+}
