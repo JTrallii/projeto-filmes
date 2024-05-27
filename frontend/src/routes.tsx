@@ -4,6 +4,7 @@ import Navegacao from "components/nav/Navegacao";
 import PaginaInicial from "pages/paginaInicial/PaginaInicial";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PaginaFilme from "pages/paginaFilme/PaginaFilme";
+import ListaCategoria from "pages/listaCategoria/ListaCategoria";
 
 
 export default function Rotas() {
@@ -16,7 +17,7 @@ export default function Rotas() {
       <Routes>
         <Route path="/" element={<PaginaInicial qtdFilmes={qtdFilmes} />} />
         <Route path="filmes/:id" element={<PaginaFilme />} />
-        <Route path="filmes/categoria/:categoria" element={<PaginaFilme />} />
+        <Route path="filmes/categoria/:categoria" element={<ListaCategoria />} />
       </Routes>
     </Router>
   );

@@ -7,6 +7,7 @@ import Comentarios from "./comentarios/Comentarios";
 import { useFetchFilmes } from "hooks/useEffetsGetDados";
 import Trailer from "./trailerFilme/TrailerFilme";
 import FilmesRelacionados from "./filmesRelacionados/FilmesRelacionados";
+import { formatarData } from "utils/formatarData";
 
 export default function PaginaFilme() {
   const { id } = useParams();
@@ -51,7 +52,7 @@ export default function PaginaFilme() {
                   </p>
                   <p>
                     <b>Lançamento: </b>
-                    {filme.dataLancamento}
+                    {formatarData(filme.dataLancamento)}
                   </p>
                   <p>
                     <b>Gênero: </b>
