@@ -16,6 +16,7 @@ export default function Rotas() {
       <Routes>
         <Route path="/" element={<PaginaInicial qtdFilmes={qtdFilmes} />} />
         <Route path="filmes/:id" element={<PaginaFilme />} />
+        <Route path="filmes/categoria/:categoria" element={<PaginaFilme />} />
       </Routes>
     </Router>
   );
