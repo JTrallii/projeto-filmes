@@ -8,7 +8,6 @@ import pipoflix.meu.meupipoflix.errors.FilmeNaoEncontradoException;
 import pipoflix.meu.meupipoflix.model.Categoria;
 import pipoflix.meu.meupipoflix.model.Filme;
 import pipoflix.meu.meupipoflix.repository.FilmeRepository;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

@@ -4,6 +4,7 @@ package pipoflix.meu.meupipoflix.model;
 import aj.org.objectweb.asm.commons.Remapper;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,9 @@ public class Filme {
     private Categoria genero;
     private String trailer;
 
+    @OneToMany(mappedBy = "filme", cascade = CascadeType.ALL)
+    private List<Comentario> comentarios;
+
     public Filme(){}
 
     public Filme(Long id, String titulo, String sinopse,
@@ -45,6 +49,21 @@ public class Filme {
         this.imdb = imdb;
         this.genero = Categoria.fromString(String.valueOf(genero));
         this.trailer = trailer;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public void adicionarComentario(Comentario comentario) {
+        if (comentarios == null) {
+            comentarios = new ArrayList<>();
+        }
+        comentarios.add(comentario);
     }
 
     public Long getId() {
