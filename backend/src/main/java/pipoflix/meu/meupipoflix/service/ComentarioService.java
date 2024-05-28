@@ -7,6 +7,8 @@ import pipoflix.meu.meupipoflix.dto.ComentarioDTO;
 import pipoflix.meu.meupipoflix.model.Comentario;
 import pipoflix.meu.meupipoflix.repository.ComentariosRepository;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +17,8 @@ public class ComentarioService {
 
     @Autowired
     private ComentariosRepository repositorio;
+
+    private ConverteDados conversor;
 
     private List<ComentarioDTO> converteDadosDto(List<Comentario> descricaoComentario) {
         return descricaoComentario.stream()
@@ -27,17 +31,14 @@ public class ComentarioService {
     }
 
     public void criarComentario(ComentarioDTO comentarioDTO) {
-        if (comentarioDTO.autor() == null || comentarioDTO.autor().isEmpty()) {
-            throw new IllegalArgumentException("O autor do comentário não pode ser vazio !");
-        }
-        if (comentarioDTO.descricaoComentario() == null || comentarioDTO.descricaoComentario().isEmpty() || comentarioDTO.descricaoComentario().length() > 500) {
-            throw new IllegalArgumentException("O comentário não pode ser vazio e conter no máximo 500 caracteres ! !");
-        }
         Comentario comentario = new Comentario();
         comentario.setAutor(comentarioDTO.autor());
         comentario.setDescricaoComentario(comentarioDTO.descricaoComentario());
         comentario.setDataComentario(comentarioDTO.dataComentario());
 
-        repositorio.save(comentario);
+        // Adicionando log para verificar se os dados estão corretos
+        System.out.println("Comentário a ser salvo: " + comentario);
+
+        repositorio.save(comentario); // Salvando o comentário no banco de dados
     }
 }

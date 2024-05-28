@@ -20,14 +20,6 @@ public class Comentario {
     private Filme filme;
 
 
-    public Filme getFilme() {
-        return filme;
-    }
-
-    public void setFilme(Filme filme) {
-        this.filme = filme;
-    }
-
     public Long getId() {
         return id;
     }
@@ -60,11 +52,22 @@ public class Comentario {
         this.dataComentario = dataComentario;
     }
 
+    public Filme getFilme() {
+        return filme;
+    }
+
+    public void setFilme(Filme filme) {
+        this.filme = filme;
+    }
+
     @Override
     public String toString() {
-        return "Comentario = " +
-                "id: " + id +
-                ", autor: " + autor + '\'' +
-                ", descricaoComentario: " + descricaoComentario + '}';
+        return "Comentario{" +
+                "id=" + id +
+                ", autor='" + autor + '\'' +
+                ", descricaoComentario='" + descricaoComentario + '\'' +
+                ", dataComentario=" + dataComentario +
+                ", filme=" + filme +
+                '}';
     }
 }
