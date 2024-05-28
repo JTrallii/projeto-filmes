@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./comentarios.module.css";
 import UseCriarComentario from "hooks/useCriarComentario";
 
-interface Comentario {
-  id: number;
-  autor: string;
-  comentario: string;
-  data: Date;
-}
+
 
 export default function Comentarios() {
-  const [autor, setAutor] = useState<string>("");
-  const [comentario, setComentario] = useState<string>("");
+  const [autorInput, setAutorInput] = useState<string>("");
+  const [comentarioInput, setComentarioInput] = useState<string>("");
   const { criarComentario } = UseCriarComentario();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    criarComentario({ autor, comentario });
-    setAutor("");
-    setComentario("");
+    const dataAtual = new Date().toISOString();
+    criarComentario({ autor: autorInput, descricaoComentario: comentarioInput, dataComentario: dataAtual });
+    setAutorInput("");
+    setComentarioInput("");
+    console.log(autorInput);
+    console.log(comentarioInput);
+  };
 
   return (
     <div className={`${styles.container} ${styles.display}`}>
@@ -34,8 +33,8 @@ export default function Comentarios() {
           type="text"
           id="autor"
           required
-          value={autor}
-          onChange={(e) => setAutor(e.target.value)}
+          value={autorInput}
+          onChange={(e) => setAutorInput(e.target.value)}
         />
         <label htmlFor="comentario">Comentário:</label>
         <textarea
@@ -43,15 +42,14 @@ export default function Comentarios() {
           cols={30}
           rows={6}
           required
-          value={comentario}
-          onChange={(e) => setComentario(e.target.value)}
+          value={comentarioInput}
+          onChange={(e) => setComentarioInput(e.target.value)}
         ></textarea>
         <button type="submit">ENVIAR COMENTÁRIO</button>
       </form>
       <section className={styles.comentarios}>
-        
       </section>
     </div>
   );
 }
-}
+

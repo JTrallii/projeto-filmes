@@ -3,11 +3,11 @@ import styles from "./paginaFilme.module.css";
 import ImgPrincipal from "components/ImgPrincipal/ImgPrincipal";
 import { useParams } from "react-router-dom";
 import FilmesRecomendados from "./filmesRecomendados/FilmesRecomendados";
-import Comentarios from "./comentarios/Comentarios";
 import { useFetchFilmes } from "hooks/useEffetsGetDados";
 import Trailer from "./trailerFilme/TrailerFilme";
 import FilmesRelacionados from "./filmesRelacionados/FilmesRelacionados";
 import { formatarData } from "utils/formatarData";
+import Comentarios from "./comentarios/Comentarios";
 
 export default function PaginaFilme() {
   const { id } = useParams();

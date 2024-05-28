@@ -1,28 +1,21 @@
 import { useState } from "react";
 
-type ComentarioData = {
-  autor: string;
-  comentario: string;
-};
 
-type UseCriarComentarioResult = {
-  criarComentario: (comentarioData: ComentarioData) => Promise<boolean>;
-  error: string | null;
-};
 
-const UseCriarComentario = (): UseCriarComentarioResult => {
+const UseCriarComentario = () => {
   const [error, setError] = useState<string | null>(null);
+  const baseURL = "http://localhost:8080";
+  const dataAtual = new Date().toISOString();
 
-  const criarComentario = async (comentarioData: ComentarioData): Promise<boolean> => {
-    setError(null);
-
+  const criarComentario = async ({ autor, descricaoComentario, dataComentario }: { autor: string, descricaoComentario: string, dataComentario: typeof dataAtual }) => {
     try {
-      const response = await fetch("/comentarios", {
+      console.log("Dados enviados para o servidor:", { autor, descricaoComentario, dataComentario });
+      const response = await fetch(`${baseURL}/comentarios`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(comentarioData),
+        body: JSON.stringify({ autor, descricaoComentario, dataComentario }),
       });
 
       if (!response.ok) {
@@ -30,14 +23,14 @@ const UseCriarComentario = (): UseCriarComentarioResult => {
       }
 
       return true;
-    } catch (error: unknown) {
-        if (error instanceof Error) {
-          setError(error.message);
-        } else {
-          setError("Ocorreu um erro desconhecido");
-        }
-        return false;
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Ocorreu um erro ao criar o comentario");
       }
+      return false;
+    }
   };
 
   return { criarComentario, error };
