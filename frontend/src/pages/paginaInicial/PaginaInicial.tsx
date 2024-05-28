@@ -17,8 +17,6 @@ export default function PaginaInicial({ qtdFilmes }: PaginaInicialProps) {
     <main>
       <section
         className={styles.sectionContainer}
-        data-name="section-ultimas-postagens"
-        id="section-ultimas-postagens"
       >
         <p className={styles.paragrafo}>ULTIMAS POSTAGENS</p>
         <div className={styles.container}>

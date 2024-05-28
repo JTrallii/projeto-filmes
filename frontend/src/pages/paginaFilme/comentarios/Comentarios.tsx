@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./comentarios.module.css";
+import UseCriarComentario from "hooks/useCriarComentario";
 
 interface Comentario {
   id: number;
@@ -11,29 +12,20 @@ interface Comentario {
 export default function Comentarios() {
   const [autor, setAutor] = useState<string>("");
   const [comentario, setComentario] = useState<string>("");
-  const [comentarios, setComentarios] = useState<Comentario[]>([]);
+  const { criarComentario } = UseCriarComentario();
 
-  const enviarFormulario = (ev: React.FormEvent<HTMLFormElement>) => {
-    ev.preventDefault();
-
-    const novoComentario = {
-      id: Math.floor(Math.random() * 100000000000),
-      autor: autor,
-      comentario: comentario,
-      data: new Date(),
-    };
-
-    setComentarios((estado) => [novoComentario, ...estado]);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    criarComentario({ autor, comentario });
     setAutor("");
     setComentario("");
-  };
 
   return (
     <div className={`${styles.container} ${styles.display}`}>
       <h1>Seção de comentários</h1>
       <form
         className={`${styles.formulario} ${styles.display}`}
-        onSubmit={enviarFormulario}
+        onSubmit={handleSubmit}
       >
         <label id="autor" htmlFor="autor">
           Autor do comentário:
@@ -57,18 +49,9 @@ export default function Comentarios() {
         <button type="submit">ENVIAR COMENTÁRIO</button>
       </form>
       <section className={styles.comentarios}>
-        {comentarios.length > 0 ? (
-          comentarios.slice(0, 5).map((comentarioNovo) => (
-            <div key={comentarioNovo.id}>
-              <h3>{comentarioNovo.autor}</h3>
-              <span>Em {comentarioNovo.data.toLocaleString()}</span>
-              <p>{comentarioNovo.comentario}</p>
-            </div>
-          ))
-        ) : (
-          <p className={styles.semComentario}>Seja o primeiro a comentar!</p>
-        )}
+        
       </section>
     </div>
   );
+}
 }
