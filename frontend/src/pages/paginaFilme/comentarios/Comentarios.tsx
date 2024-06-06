@@ -1,31 +1,36 @@
 import React, { useEffect, useState } from "react";
 import styles from "./comentarios.module.css";
+import UseCriarComentario from "hooks/useCriarComentario";
+import { useFetchComentarios } from "hooks/useFetchComentarios";
 
-interface Comentario {
-  id: number;
-  autor: string;
-  comentario: string;
-  data: Date;
+interface ComentariosProps {
+  filmeId: number;
 }
 
-export default function Comentarios() {
-  const [autor, setAutor] = useState<string>("");
-  const [comentario, setComentario] = useState<string>("");
-  const [comentarios, setComentarios] = useState<Comentario[]>([]);
+export default function Comentarios({ filmeId }: ComentariosProps) {
+  const [autorInput, setAutorInput] = useState<string>("");
+  const [comentarioInput, setComentarioInput] = useState<string>("");
+  const { criarComentario } = UseCriarComentario();
+  const { comentarios, fetchComentarios } = useFetchComentarios({ endpoint: `/filmes/${filmeId}/comentarios` });
 
-  const enviarFormulario = (ev: React.FormEvent<HTMLFormElement>) => {
-    ev.preventDefault();
+  useEffect(() => {
+    fetchComentarios();
+  }, [filmeId, fetchComentarios]);
 
-    const novoComentario = {
-      id: Math.floor(Math.random() * 100000000000),
-      autor: autor,
-      comentario: comentario,
-      data: new Date(),
-    };
-
-    setComentarios((estado) => [novoComentario, ...estado]);
-    setAutor("");
-    setComentario("");
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const dataAtual = new Date().toISOString();
+    const sucesso = await criarComentario({
+      autor: autorInput,
+      descricaoComentario: comentarioInput,
+      dataComentario: dataAtual,
+      filmeId: filmeId,
+    });
+    if (sucesso) {
+      setAutorInput("");
+      setComentarioInput("");
+      await fetchComentarios();
+    }
   };
 
   return (
@@ -33,7 +38,7 @@ export default function Comentarios() {
       <h1>Seção de comentários</h1>
       <form
         className={`${styles.formulario} ${styles.display}`}
-        onSubmit={enviarFormulario}
+        onSubmit={handleSubmit}
       >
         <label id="autor" htmlFor="autor">
           Autor do comentário:
@@ -42,8 +47,8 @@ export default function Comentarios() {
           type="text"
           id="autor"
           required
-          value={autor}
-          onChange={(e) => setAutor(e.target.value)}
+          value={autorInput}
+          onChange={(e) => setAutorInput(e.target.value)}
         />
         <label htmlFor="comentario">Comentário:</label>
         <textarea
@@ -51,23 +56,19 @@ export default function Comentarios() {
           cols={30}
           rows={6}
           required
-          value={comentario}
-          onChange={(e) => setComentario(e.target.value)}
+          value={comentarioInput}
+          onChange={(e) => setComentarioInput(e.target.value)}
         ></textarea>
         <button type="submit">ENVIAR COMENTÁRIO</button>
       </form>
       <section className={styles.comentarios}>
-        {comentarios.length > 0 ? (
-          comentarios.slice(0, 5).map((comentarioNovo) => (
-            <div key={comentarioNovo.id}>
-              <h3>{comentarioNovo.autor}</h3>
-              <span>Em {comentarioNovo.data.toLocaleString()}</span>
-              <p>{comentarioNovo.comentario}</p>
-            </div>
-          ))
-        ) : (
-          <p className={styles.semComentario}>Seja o primeiro a comentar!</p>
-        )}
+        {comentarios.slice().reverse().map((comentario) => (
+          <div className={`${styles.comentarios_descricao} ${styles.montserrat_comentario}`} key={comentario.id}>
+            <h2><span>Autor: </span>{comentario.autor}</h2>
+            <h3><span>Comentário: </span></h3>
+            <p>{comentario.descricaoComentario}</p>
+          </div>
+        ))}
       </section>
     </div>
   );

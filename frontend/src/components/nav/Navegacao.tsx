@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Navegacao() {
 
-  return (
-    
+  return ( 
       <nav className={styles.navegacao}>
         <ul className={`${styles.navegacao_ul} ${styles.alinhamento}`}>
           <Link className={`${styles.navegacao_link}`} to={"filmes/categoria/acao"}><li>AÇÃO</li></Link>
@@ -16,6 +15,5 @@ export default function Navegacao() {
           <Link className={`${styles.navegacao_link}`} to={"filmes/categoria/comedia"}><li>COMÉDIA</li></Link>
         </ul>
       </nav>
-    
   );
 }
