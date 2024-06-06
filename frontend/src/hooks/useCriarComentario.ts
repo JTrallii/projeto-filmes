@@ -7,15 +7,15 @@ const UseCriarComentario = () => {
   const baseURL = "http://localhost:8080";
   const dataAtual = new Date().toISOString();
 
-  const criarComentario = async ({ autor, descricaoComentario, dataComentario }: { autor: string, descricaoComentario: string, dataComentario: typeof dataAtual }) => {
+  const criarComentario = async ({ autor, descricaoComentario, dataComentario, filmeId }: { autor: string, descricaoComentario: string, dataComentario: typeof dataAtual, filmeId: number }) => {
     try {
-      console.log("Dados enviados para o servidor:", { autor, descricaoComentario, dataComentario });
-      const response = await fetch(`${baseURL}/comentarios`, {
+      console.log("Dados enviados para o servidor:", { autor, descricaoComentario, dataComentario, filmeId });
+      const response = await fetch(`${baseURL}/filmes/${filmeId}/comentarios`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ autor, descricaoComentario, dataComentario }),
+        body: JSON.stringify({ autor, descricaoComentario, dataComentario, filmeId }),
       });
 
       if (!response.ok) {

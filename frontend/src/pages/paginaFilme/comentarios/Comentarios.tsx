@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./comentarios.module.css";
 import UseCriarComentario from "hooks/useCriarComentario";
+import { useFetchComentarios } from "hooks/useFetchComentarios";
 
+interface ComentariosProps {
+  filmeId: number;
+}
 
-
-export default function Comentarios() {
+export default function Comentarios({ filmeId }: ComentariosProps) {
   const [autorInput, setAutorInput] = useState<string>("");
   const [comentarioInput, setComentarioInput] = useState<string>("");
   const { criarComentario } = UseCriarComentario();
+  const { comentarios, fetchComentarios } = useFetchComentarios({ endpoint: `/filmes/${filmeId}/comentarios` });
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    fetchComentarios();
+  }, [filmeId, fetchComentarios]);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const dataAtual = new Date().toISOString();
-    criarComentario({ autor: autorInput, descricaoComentario: comentarioInput, dataComentario: dataAtual });
-    setAutorInput("");
-    setComentarioInput("");
-    console.log(autorInput);
-    console.log(comentarioInput);
+    const sucesso = await criarComentario({
+      autor: autorInput,
+      descricaoComentario: comentarioInput,
+      dataComentario: dataAtual,
+      filmeId: filmeId,
+    });
+    if (sucesso) {
+      setAutorInput("");
+      setComentarioInput("");
+      await fetchComentarios();
+    }
   };
 
   return (
@@ -48,8 +62,14 @@ export default function Comentarios() {
         <button type="submit">ENVIAR COMENTÁRIO</button>
       </form>
       <section className={styles.comentarios}>
+        {comentarios.slice().reverse().map((comentario) => (
+          <div className={`${styles.comentarios_descricao} ${styles.montserrat_comentario}`} key={comentario.id}>
+            <h2><span>Autor: </span>{comentario.autor}</h2>
+            <h3><span>Comentário: </span></h3>
+            <p>{comentario.descricaoComentario}</p>
+          </div>
+        ))}
       </section>
     </div>
   );
 }
-

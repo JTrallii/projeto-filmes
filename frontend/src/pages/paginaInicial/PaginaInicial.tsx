@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./paginaInicial.module.css";
 import { Link } from "react-router-dom";
 
-import { useFetchFilmes } from "hooks/useEffetsGetDados";
+import { useFetchFilmes } from "hooks/useFetchFilmes";
 
 interface PaginaInicialProps {
   qtdFilmes: number;

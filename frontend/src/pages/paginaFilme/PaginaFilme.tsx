@@ -3,7 +3,7 @@ import styles from "./paginaFilme.module.css";
 import ImgPrincipal from "components/ImgPrincipal/ImgPrincipal";
 import { useParams } from "react-router-dom";
 import FilmesRecomendados from "./filmesRecomendados/FilmesRecomendados";
-import { useFetchFilmes } from "hooks/useEffetsGetDados";
+import { useFetchFilmes } from "hooks/useFetchFilmes";
 import Trailer from "./trailerFilme/TrailerFilme";
 import FilmesRelacionados from "./filmesRelacionados/FilmesRelacionados";
 import { formatarData } from "utils/formatarData";
@@ -12,27 +12,37 @@ import Comentarios from "./comentarios/Comentarios";
 export default function PaginaFilme() {
   const { id } = useParams();
   const filmeEncontrado = useFetchFilmes({ endpoint: `/filmes/id/${id}` });
-  const generoFilme = filmeEncontrado.map(filme => filme.genero);
-  
+  const generoFilme = filmeEncontrado.map((filme) => filme.genero);
+
   const qtdFilmes = 5;
+
+  const filmesRecomendados = useFetchFilmes({ endpoint: "/filmes" }).filter(
+    (filme) => filme.id !== id && !filmeEncontrado.find((f) => f.id === filme.id)
+  );
+  const filmesRelacionados = useFetchFilmes({ endpoint: `/filmes/categoria/${generoFilme}` }).filter(
+    (filme) => filme.id !== id && !filmesRecomendados.find((f) => f.id === filme.id)
+  );
 
   return (
     <main className={styles.main}>
       <div className={styles.mainContainerLancamento}>
         <aside>
-          <FilmesRelacionados generoFilme={generoFilme[0]} qtdFilmes={qtdFilmes} />
+          <FilmesRelacionados
+            generoFilme={generoFilme[0]}
+            qtdFilmes={qtdFilmes}
+            filmesRelacionados={filmesRelacionados}
+          />
         </aside>
 
         <section className={styles.mainContainer}>
           {filmeEncontrado.map((filme) => (
-            <>
+            <React.Fragment key={filme.id}>
               <section
                 className={`${styles.containerFilme} ${styles.display}`}
-                key={filme.id}
+                id="filme-descricao"
               >
                 <div
                   className={`${styles.containerFilmeDescricao} ${styles.display}`}
-                  id="filme-descricao"
                 >
                   <ImgPrincipal
                     path={filme.poster}
@@ -72,13 +82,17 @@ export default function PaginaFilme() {
                   </p>
                 </div>
               </section>
-              <section id={filme.trailer} className={`${styles.containerFilmeTrailer} ${styles.display}`}>
+              <section
+                id={filme.trailer}
+                className={`${styles.containerFilmeTrailer} ${styles.display}`}
+                key={filme.trailer}
+              >
                 <Trailer videoUrl={filme.trailer} />
               </section>
-          <section>
-            <Comentarios />
-          </section>
-            </>
+              <section key={`${filme.id}-comentarios`}>
+                <Comentarios filmeId={+filme.id} />
+              </section>
+            </React.Fragment>
           ))}
         </section>
         <aside>
