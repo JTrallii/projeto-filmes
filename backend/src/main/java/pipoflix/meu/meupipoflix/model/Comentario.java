@@ -1,6 +1,7 @@
 package pipoflix.meu.meupipoflix.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -16,7 +17,10 @@ public class Comentario {
     private LocalDateTime dataComentario;
 
     @ManyToOne
-    @JoinColumn(name = "filme_id")
+    @JoinColumn(name = "filme_id", nullable = false)
+    //@JsonBackReference na entidade Comentario na propriedade filme
+    //indica que esta é a "referência de volta". Esta não será serializada, evitando a recursão infinita.
+    @JsonBackReference
     private Filme filme;
 
 

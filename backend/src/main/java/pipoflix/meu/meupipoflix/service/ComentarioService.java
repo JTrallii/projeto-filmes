@@ -30,11 +30,11 @@ public class ComentarioService {
         return converteDadosDto(repositorio.findAll());
     }
 
-    public void criarComentario(ComentarioDTO comentarioDTO) {
+    public void criarComentario(Comentario comentarioDTO) {
         Comentario comentario = new Comentario();
-        comentario.setAutor(comentarioDTO.autor());
-        comentario.setDescricaoComentario(comentarioDTO.descricaoComentario());
-        comentario.setDataComentario(comentarioDTO.dataComentario());
+        comentario.setAutor(comentarioDTO.getAutor());
+        comentario.setDescricaoComentario(comentarioDTO.getDescricaoComentario());
+        comentario.setDataComentario(comentarioDTO.getDataComentario());
 
         // Adicionando log para verificar se os dados estão corretos
         System.out.println("Comentário a ser salvo: " + comentario);
