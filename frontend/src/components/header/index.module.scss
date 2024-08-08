@@ -1,0 +1,34 @@
+@use '../../style/abstract/variaveis';
+@use '../../style/abstract/mixins';
+@import '../../style/abstract/media-queries';
+
+.header {
+  @include mixins.centralizar();
+  width: 300px;
+  margin: 0.5rem auto;  
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 20rem;
+  }
+}
+
+//media querry
+
+@media #{$desktop-low} {
+  .header {
+    margin: 0.8rem auto;
+  }
+}
+
+@media #{$desktop-full} {
+  .header {
+    width: 500px;
+    margin: 0.5rem auto;
+  }
+}
+
+
+
+
+

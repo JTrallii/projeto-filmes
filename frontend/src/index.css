@@ -139,6 +139,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background: url("./img/logo2.png") no-repeat top; */
   background-color: #212f3c;
 }
 

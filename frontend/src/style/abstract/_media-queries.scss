@@ -1,0 +1,13 @@
+// media-queries.scss
+
+// Mobile (Smartphones)
+$mobile: "(max-width: 575px)";
+
+// Tablet (Retrato)
+$tablet: "(min-width: 576px) and (max-width: 767px)";
+
+// Desktops e Laptops (Pequenos)
+$desktop-low: "(min-width: 768px) and (max-width: 1199px)";
+
+// Desktops (Grandes)
+$desktop-full: "(min-width: 1200px)";

@@ -1,15 +1,12 @@
 import React from "react";
-import { ReactNode } from "react";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
+import logo from "../../assets/logo.jpg";
 
-interface HeaderProps {
-  children: ReactNode;
-}
 
-const Header: React.FC<HeaderProps> = ({ children }) => {
+const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <div>{children}</div>
+      <img src={logo} alt="" />
     </header>
   );
 };
