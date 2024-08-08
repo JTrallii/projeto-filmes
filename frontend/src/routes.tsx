@@ -12,7 +12,7 @@ export default function Rotas() {
 
   return (
     <Router>
-      <Header>PIPOFLIX</Header>
+      <Header></Header>
       <Navegacao />
       <Routes>
         <Route path="/" element={<PaginaInicial qtdFilmes={qtdFilmes} />} />
