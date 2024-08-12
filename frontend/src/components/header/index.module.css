@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  margin: 0.5rem auto;
+}
+.header img {
+  width: 100%;
+  height: auto;
+  border-radius: 20rem;
+}
+
+@media (min-width: 1200px) {
+  .header {
+    width: 500px;
+  }
+}/*# sourceMappingURL=index.module.css.map */
