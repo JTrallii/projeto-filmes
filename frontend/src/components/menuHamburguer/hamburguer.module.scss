@@ -1,0 +1,23 @@
+@use "../../style/abstract/variaveis";
+@use "../../style/abstract/mixins";
+@use "../../style/abstract/media-queries" as mediaQuerry;
+
+.botao__burguer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &--ativo {
+    display: none;
+  }
+
+  @media #{mediaQuerry.$desktop-full} {
+    display: none;
+  }
+}
+
+
