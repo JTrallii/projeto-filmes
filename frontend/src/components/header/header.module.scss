@@ -1,0 +1,105 @@
+@use "../../style/abstract/variaveis";
+@use "../../style/abstract/mixins";
+@use "../../style/abstract/media-queries" as mediaQuerry;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+
+  &__navegacao {
+    display: flex;
+    gap: 2rem;
+
+    &__menu_Hamburguer {
+      display: none; // Esconde o ícone em telas grandes
+
+      @media (max-width: 768px) {
+        display: block; // Mostra o ícone em telas menores
+      }
+    }
+
+    &__logo {
+      width: 150px;
+        
+      @media (max-width: 768px) {
+        width: 100px; // Reduz o logo em telas menores
+      }
+    }
+
+    &__menu {
+      display: flex;
+    }
+  }
+
+  
+
+  .menuAberto {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @media #{mediaQuerry.$desktop-full} {
+    @include mixins.centralizar();
+    flex-direction: column;
+  }
+}
+
+// .header {
+//   @include mixins.centralizar();
+//   width: 300px;
+//   margin: 0.5rem auto;
+
+//   &__menu {
+
+//   }
+
+//   &__logo {
+//     display: none;
+//     width: 100%;
+//     height: auto;
+//     border-radius: 20rem;
+//   }
+// }
+
+// //media querry
+
+// @media #{mediaQuerry.$desktop-full} {
+//   .header {
+//     &__logo {
+//       display: flex;
+//       width: 500px;
+//     }
+//   }
+// }
+
+// .header {
+//   @include mixins.centralizar();
+//   width: 300px;
+//   margin: 0.5rem auto;
+
+//   &__menu {
+
+//   }
+
+//   &__logo {
+//     display: none;
+//     width: 100%;
+//     height: auto;
+//     border-radius: 20rem;
+//   }
+// }
+
+// //media querry
+
+// @media #{mediaQuerry.$desktop-full} {
+//   .header {
+//     &__logo {
+//       display: flex;
+//       width: 500px;
+//     }
+//   }
+// }
