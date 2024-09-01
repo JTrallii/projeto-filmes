@@ -140,7 +140,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background: url("./img/logo2.png") no-repeat top; */
-  background-color: #212f3c;
+  background-image: url("./assets/fundo1.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }
 
 code {

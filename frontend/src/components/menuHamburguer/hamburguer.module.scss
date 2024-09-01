@@ -9,10 +9,13 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  fill: white;
   padding: 0;
+  z-index: 9999;
 
   &--ativo {
-    display: none;
+    display: block;
+    fill: variaveis.$cor-azul-escuro;
   }
 
   @media #{mediaQuerry.$desktop-full} {

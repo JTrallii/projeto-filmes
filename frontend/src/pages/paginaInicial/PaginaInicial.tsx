@@ -2,6 +2,7 @@ import ImgPrincipal from "components/ImgPrincipal/ImgPrincipal";
 import React from "react";
 import styles from "./paginaInicial.module.css";
 import { Link } from "react-router-dom";
+import imagem from "../../assets/JohnWick1.jpg";
 
 import { useFetchFilmes } from "hooks/useFetchFilmes";
 
@@ -20,7 +21,8 @@ export default function PaginaInicial({ qtdFilmes }: PaginaInicialProps) {
       >
         <p className={styles.paragrafo}>ULTIMAS POSTAGENS</p>
         <div className={styles.container}>
-          {ultimasPostagens.slice(0, qtdFilmes).map((filme) => (
+
+          {/* {ultimasPostagens.slice(0, qtdFilmes).map((filme) => (
             <Link key={filme.id} to={`/filmes/${filme.id}`}>
               <ImgPrincipal
                 path={filme.poster}
@@ -28,7 +30,7 @@ export default function PaginaInicial({ qtdFilmes }: PaginaInicialProps) {
                 titulo={filme.titulo}
               />
             </Link>
-          ))}
+          ))} */}
         </div>
       </section>
 
