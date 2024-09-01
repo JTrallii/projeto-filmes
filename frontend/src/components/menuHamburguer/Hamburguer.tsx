@@ -10,7 +10,7 @@ interface HamburguerProps {
 export default function Hamburguer({ open, setOpen }: HamburguerProps) {
   return (
     <button 
-      className={`${styles.botao__burguer} ${open ? styles["botao__burguer--ativo"] : ""}`} 
+      className={`${styles.botao__burguer} ${open ? styles["botao__burguer--ativo"] : ""}`}
       onClick={() => setOpen(!open)}
     >
       <BurgerIcon width={24} height={24} />

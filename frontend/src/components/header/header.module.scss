@@ -3,35 +3,52 @@
 @use "../../style/abstract/media-queries" as mediaQuerry;
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+  @include mixins.centralizar();
+  flex-direction: column;
+  padding: 0.25rem;
   position: relative;
+  
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    @apply px-4;
+    @apply py-2;
+    flex-direction: row;
+    align-items: center;
+
+    &__logo {
+      @apply w-36;
+
+      @media (min-width: 760px) {
+        @apply w-56;
+      }
+
+      @media (min-width: 1024px) {
+        @apply w-72;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      @apply flex;
+      @apply items-center;
+      @apply justify-center;
+    }
+
+  }
 
   &__navegacao {
     display: flex;
     gap: 2rem;
 
     &__menu_Hamburguer {
-      display: none; // Esconde o ícone em telas grandes
-
-      @media (max-width: 768px) {
-        display: block; // Mostra o ícone em telas menores
-      }
+      display: none;
     }
+  }
 
-    &__logo {
-      width: 150px;
-        
-      @media (max-width: 768px) {
-        width: 100px; // Reduz o logo em telas menores
-      }
-    }
-
-    &__menu {
-      display: flex;
-    }
+  &__menu {
+    display: flex;
+    width: 100%;
   }
 
   
@@ -42,10 +59,10 @@
     gap: 1rem;
   }
 
-  @media #{mediaQuerry.$desktop-full} {
-    @include mixins.centralizar();
-    flex-direction: column;
-  }
+  // @media #{mediaQuerry.$desktop-full} {
+  //   @include mixins.centralizar();
+  //   flex-direction: column;
+  // }
 }
 
 // .header {
