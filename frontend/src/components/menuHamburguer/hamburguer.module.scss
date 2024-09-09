@@ -18,6 +18,10 @@
     fill: variaveis.$cor-azul-escuro;
   }
 
+  // @media #{mediaQuerry.$tablet} {
+  //   display: none;
+  // }
+
   @media #{mediaQuerry.$desktop-full} {
     display: none;
   }
