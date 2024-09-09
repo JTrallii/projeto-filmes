@@ -1,0 +1,52 @@
+@use "../../style/abstract/variaveis";
+@use "../../style/abstract/mixins";
+@use "../../style/abstract/media-queries" as mediaQuerry;
+
+
+.section__container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+
+  &__paragrafo {
+    font-size: 0.8rem;
+    color: variaveis.$cor-branco-medio;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    margin-left: 0.5rem;
+  }
+
+
+  &__filmes {
+    @include mixins.centralizar();
+    gap: 0.5rem;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
+
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.seta-esquerda, .seta-direita {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  z-index: 2;
+  
+  &.seta-esquerda {
+    left: 0;
+  }
+  
+  &.seta-direita {
+    right: 0;
+  }
+}
+

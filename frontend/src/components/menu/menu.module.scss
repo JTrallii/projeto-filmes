@@ -20,6 +20,7 @@
     overflow: hidden; /* Esconde o conteúdo */
     transition: max-height 2s ease-in-out;
     transition: 0.5s;
+    z-index: 9999;
 
     &--ativo {
       max-height: 200px;

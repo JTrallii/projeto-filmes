@@ -1,10 +1,12 @@
 .img {
-  width: 240px;
-  height: 340px;
+  min-width: 100px;
+  height: 140px;
   border: 0.3rem solid var(--cor-azul-escuro);
   border-radius: 0.8rem;
+  display: flex;
+  flex-shrink: 0;
 }
 a .img:hover {
-  border-width: 0.5rem;
+  border-width: 0.2rem;
   transition: 0.1s;
 }

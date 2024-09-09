@@ -1,0 +1,56 @@
+@use "../../style/abstract/variaveis";
+@use "../../style/abstract/mixins";
+@use "../../style/abstract/media-queries" as mediaQuerry;
+
+.carrossel__container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 5px;
+  
+  
+  &__slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+
+
+    &__slide {
+      min-width: 100%;
+      box-sizing: border-box;
+
+
+      &__img {
+        width: 100%;
+        aspect-ratio: 16 / 9; // Proporção 16:9 para largura e altura
+        object-fit: cover; // Para garantir que a imagem preencha o container corretamente sem distorções
+      }
+    }
+  }
+}
+
+.carrossel__dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+
+  &__dot {
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    background-color: variaveis.$cor-branco-medio;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    
+
+
+    &--ativo {
+      background-color: variaveis.$cor-azul-escuro;
+    }
+  }
+}

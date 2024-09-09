@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./imgPrincipal.module.css";
+import styles from "./imgPrincipal.module.scss";
 
 interface ImgPrincipalProps {
   path: string;
