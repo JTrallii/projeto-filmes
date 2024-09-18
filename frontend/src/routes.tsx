@@ -7,13 +7,13 @@ import ListaCategoria from "pages/listaCategoria/ListaCategoria";
 
 
 export default function Rotas() {
-  const qtdFilmes = 7;
+
 
   return (
     <Router>
       <Header></Header>
       <Routes>
-        <Route path="/" element={<PaginaInicial qtdFilmes={qtdFilmes} />} />
+        <Route path="/" element={<PaginaInicial />} />
         <Route path="filmes/:id" element={<PaginaFilme />} />
         <Route path="filmes/categoria/:categoria" element={<ListaCategoria />} />
       </Routes>

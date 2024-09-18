@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./secao.module.scss";
+import { Link } from "react-router-dom";
 
+interface Filme {
+  titulo: string;
+  path: string;
+  id: number
+}
 
 interface SecaoPrincipalProps {
-  filmes: string[];
+  filmes: Filme[];
 }
 
 export default function SecaoPrincipal({ filmes }: SecaoPrincipalProps) {
@@ -14,7 +20,7 @@ export default function SecaoPrincipal({ filmes }: SecaoPrincipalProps) {
       setIndexFilme((prevIndex) =>
         prevIndex === filmes.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000000);
+    }, 3000000);
 
     return () => clearInterval(intervalo);
   }, [filmes.length]);
@@ -35,11 +41,18 @@ export default function SecaoPrincipal({ filmes }: SecaoPrincipalProps) {
               className={styles.carrossel__container__slides__slide}
               key={index}
             >
-              <img
-                src={image}
-                alt={`Slide ${index}`}
-                className={styles.carrossel__container__slides__slide__img}
-              />
+              <Link key={image.titulo} to={`/filmes/${image.id}`}>
+                <img
+                  src={image.path}
+                  alt={`Slide ${index}`}
+                  className={styles.carrossel__container__slides__slide__img}
+                />
+                <div
+                  className={styles.carrossel__container__slides__slide__text}
+                >
+                  <h1>{image.titulo}</h1>
+                </div>
+              </Link>
             </div>
           ))}
         </div>
