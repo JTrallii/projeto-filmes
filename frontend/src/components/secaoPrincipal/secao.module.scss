@@ -9,20 +9,51 @@
   padding-bottom: 5px;
   
   
+  
   &__slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
-
-
+    
+    
+    
     &__slide {
       min-width: 100%;
       box-sizing: border-box;
-
-
+      position: relative; // Necessário para que o pseudo-elemento se posicione em relação ao slide
+       // Adiciona o gradiente sobre a imagem
+       &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top right, black 20%, transparent 50%);
+        pointer-events: none; // Para garantir que o gradiente não interfira com interações de clique
+        z-index: 1; // Para garantir que o gradiente fique à frente da imagem
+      }
+      
+      
       &__img {
         width: 100%;
         aspect-ratio: 16 / 9; // Proporção 16:9 para largura e altura
         object-fit: cover; // Para garantir que a imagem preencha o container corretamente sem distorções
+        position: relative;
+        z-index: 0; // Certifica-se que a imagem fique abaixo do gradiente
+      }
+
+
+      // Texto sobre a imagem e o gradiente
+      &__text {
+        position: absolute;
+        left: 10px; 
+        bottom: 10px;
+        font-family: monospace;
+        font-weight: 900;
+        font-size: 2rem;
+        z-index: 2;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); // Para aumentar a legibilidade sobre a imagem
       }
     }
   }
@@ -35,8 +66,9 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-
-
+  z-index: 9999;
+  
+  
   &__dot {
     box-sizing: border-box;
     width: 10px;
@@ -47,8 +79,10 @@
     transition: background-color 0.3s;
     display: block;
     
-
-
+    
+    
+    
+    
     &--ativo {
       background-color: variaveis.$cor-azul-escuro;
     }
