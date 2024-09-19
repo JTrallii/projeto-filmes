@@ -1,6 +1,6 @@
+@use "../../style/abstract/media-queries" as mediaQuerry;
 @use "../../style/abstract/variaveis";
 @use "../../style/abstract/mixins";
-@use "../../style/abstract/media-queries" as mediaQuerry;
 
 .navegacao {
   @include mixins.centralizar();
@@ -27,15 +27,11 @@
     }
 
     @media #{mediaQuerry.$desktop-low} {
-      top: 55px;
-    }
-
-    @media #{mediaQuerry.$desktop-full} {
       overflow: visible;
       flex-direction: row;
       position: static;
       margin: 1rem;
-      background: linear-gradient(135deg, variaveis.$background, variaveis.$cor-azul-escuro); /* Mantém o gradiente */
+      background: linear-gradient(135deg, variaveis.$background, variaveis.$cor-azul-escuro);
       max-height: none;
       padding: 1rem;
       width: 100%;

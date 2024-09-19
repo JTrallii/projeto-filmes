@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 interface Filme {
   titulo: string;
   path: string;
-  id: number
+  id: number;
 }
 
 interface SecaoPrincipalProps {
@@ -47,12 +47,10 @@ export default function SecaoPrincipal({ filmes }: SecaoPrincipalProps) {
                   alt={`Slide ${index}`}
                   className={styles.carrossel__container__slides__slide__img}
                 />
-                <div
-                  className={styles.carrossel__container__slides__slide__text}
-                >
-                  <h1>{image.titulo}</h1>
-                </div>
               </Link>
+              <div className={styles.carrossel__container__slides__slide__text}>
+                <h1>{image.titulo}</h1>
+              </div>
             </div>
           ))}
         </div>

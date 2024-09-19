@@ -1,6 +1,6 @@
+@use "../../style/abstract/media-queries" as mediaQuerry;
 @use "../../style/abstract/variaveis";
 @use "../../style/abstract/mixins";
-@use "../../style/abstract/media-queries" as mediaQuerry;
 
 .header {
   @include mixins.centralizar();
@@ -21,13 +21,11 @@
       width: 100px;
       border: 1px solid;
 
-      @media #{mediaQuerry.$tablet} {
-        width: 120px;
+      @media #{mediaQuerry.$desktop-low} {
+        width: 150px;
+        
       }
-
-      @media (min-width: 1024px) {
-        @apply w-72;
-      }
+      
     }
     
     @media (min-width: 1024px) {
@@ -38,18 +36,16 @@
 
   }
 
-  &__navegacao {
-    display: flex;
-    gap: 2rem;
-
-    &__menu_Hamburguer {
-      display: none;
-    }
-  }
-
   &__menu {
     display: flex;
     width: 100%;
   }
+
+  @media #{mediaQuerry.$desktop-low} {
+    display: flex;
+    flex-direction: row;
+    order: -1;
+  }
+
 }
 
