@@ -1,13 +1,16 @@
 // media-queries.scss
 
 // Mobile (Smartphones)
-$mobile: "(max-width: 575px)";
+$mobile: "(max-width: 575.99px)";
 
 // Tablet (Retrato)
-$tablet: "(min-width: 576px) and (max-width: 767px)";
+$tablet: "(min-width: 576px) and (max-width: 767.99px)";
 
 // Desktops e Laptops (Pequenos)
-$desktop-low: "(min-width: 768px) and (max-width: 1023px)";
+$desktop-low: "(min-width: 768px) and (max-width: 1023.99px)";
 
 // Desktops (Grandes)
-$desktop-full: "(min-width: 1024px)";
+$desktop-full: "(min-width: 1024px) and (max-width: 1439.99px)";
+
+// Desktops (Extra Grandes)
+$desktop-large: "(min-width: 1440px)";
