@@ -1,5 +1,5 @@
 import React from "react";
-import SecaoPrincipal from "components/secaoPrincipal/SecaoPrincipal";
+import Banner from "components/banner/Banner";
 import imagenFilmes from "assets/img/filmes";
 import { useFetchFilmes } from "hooks/useFetchFilmes";
 import CategoriaPorLista from "./categoriaPorLista/CategoriaPorLista";
@@ -19,7 +19,7 @@ export default function PaginaInicial() {
 
   return (
     <main>
-      <SecaoPrincipal filmes={imagenFilmes} />
+      <Banner categoriaFiltrada={ultimasPostagens} />
       <CategoriaPorLista categoriaFiltrada={ultimasPostagens} tituloFiltrado={"ULTIMAS POSTAGENS"}/>
       <CategoriaPorLista categoriaFiltrada={top5} tituloFiltrado={"TOP 5"}/>
       <CategoriaPorLista categoriaFiltrada={acao} tituloFiltrado={"FILMES DE AÇÃO"}/>

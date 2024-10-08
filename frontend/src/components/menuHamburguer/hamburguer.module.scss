@@ -21,6 +21,16 @@
   @media #{mediaQuerry.$desktop-low} {
     display: none;
   }
+
+
+  @media #{mediaQuerry.$desktop-full} {
+    display: none;
+  }
+
+
+  @media #{mediaQuerry.$desktop-large} {
+    display: none;
+  }
 }
 
 

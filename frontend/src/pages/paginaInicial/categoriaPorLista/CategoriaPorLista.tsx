@@ -56,7 +56,6 @@ export default function CategoriaPorLista({ tituloFiltrado, categoriaFiltrada }:
     if (isDragging) {
       const valorPosicao = e.touches[0].clientX;
       const diff = valorPosicao - posicaoInicial;
-      console.log("Movimento de arraste:", diff);
       setPosicaoAtualCarrosselAposArraste(posicaoCarrosselAntesArraste + diff);
     }
   };
