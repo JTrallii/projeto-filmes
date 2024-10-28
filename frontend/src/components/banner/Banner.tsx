@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect, useRef } from "react";
-import ImgPrincipal from "components/ImgPrincipal/ImgPrincipal";
 import styles from "./banner.module.scss";
 
 interface Filme {
@@ -51,7 +50,7 @@ export default function Banner({ categoriaFiltrada }: BannerProps) {
       setIndiceAtualImagem((prevIndice) =>
         prevIndice + 1 === totalFilmes ? 0 : prevIndice + 1
       );
-    }, 100000000);
+    }, 3000);
 
     // Limpa o intervalo ao desmontar o componente
     return () => clearInterval(intervalId);

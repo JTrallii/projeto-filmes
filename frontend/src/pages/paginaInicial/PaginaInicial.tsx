@@ -1,6 +1,5 @@
 import React from "react";
 import Banner from "components/banner/Banner";
-import imagenFilmes from "assets/img/filmes";
 import { useFetchFilmes } from "hooks/useFetchFilmes";
 import CategoriaPorLista from "./categoriaPorLista/CategoriaPorLista";
 

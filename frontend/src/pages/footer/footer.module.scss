@@ -1,0 +1,19 @@
+@use "../../style/abstract/media-queries" as mediaQuerry;
+@use "../../style/abstract/variaveis";
+@use "../../style/abstract/mixins";
+
+.footer {
+  background: linear-gradient(135deg, variaveis.$background, variaveis.$cor-azul-escuro);
+  width: 100%;
+  color: variaveis.$cor-branco-claro;
+  font-weight: 900;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+  padding: 1rem;
+  text-align: center;
+
+  @media #{mediaQuerry.$desktop-full} {
+    font-size: 1.5rem;
+  }
+
+}

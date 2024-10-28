@@ -56,6 +56,10 @@
         @media #{mediaQuerry.$desktop-low}, #{mediaQuerry.$desktop-full}, #{mediaQuerry.$desktop-large} {
           font-size: 1rem;
         }
+
+        @media #{mediaQuerry.$desktop-large} {
+          font-size: 1.2rem;
+        }
       }
 
       &__link::after {

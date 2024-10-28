@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./trailerFilme.module.css";
+import styles from "./trailerFilme.module.scss";
 
 interface TrailerProps {
   videoUrl: string;
