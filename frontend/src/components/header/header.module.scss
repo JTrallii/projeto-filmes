@@ -7,6 +7,12 @@
   flex-direction: column;
   padding: 0.25rem;
   position: relative;
+
+  @media #{mediaQuerry.$desktop-full} {
+    display: flex;
+    flex-direction: row;
+  }
+
   
   &__container {
     width: 100%;
@@ -21,17 +27,10 @@
       width: 100px;
       border: 1px solid;
 
-      @media #{mediaQuerry.$desktop-low} {
-        width: 150px;
-        
+      @media #{mediaQuerry.$desktop-large} {
+        width: 200px;
       }
       
-    }
-    
-    @media (min-width: 1024px) {
-      @apply flex;
-      @apply items-center;
-      @apply justify-center;
     }
 
   }
@@ -41,7 +40,7 @@
     width: 100%;
   }
 
-  @media #{mediaQuerry.$desktop-low} {
+  @media #{mediaQuerry.$desktop-low}, #{mediaQuerry.$desktop-large} {
     display: flex;
     flex-direction: row;
     order: -1;

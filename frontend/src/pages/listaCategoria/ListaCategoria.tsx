@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./listaCategoria.module.css";
+import styles from "./listaCategoria.module.scss";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFetchFilmes } from "hooks/useFetchFilmes";
 import ImgPrincipal from "components/ImgPrincipal/ImgPrincipal";
@@ -11,22 +11,37 @@ export default function ListaCategoria() {
   const filmesCategoria = useFetchFilmes({
     endpoint: `/filmes/categoria/${categoriaUpper}`,
   });
-  const categoriaFormatada = categoriaUpper === "ACAO" ? "Ação" :
-                             categoriaUpper === "COMEDIA" ? "Comédia" :
-                             categoriaUpper === "ROMANCE" ? "Romance" :
-                             categoriaUpper === "DRAMA" ? "Drama" :
-                             categoriaUpper === "CRIME" ? "Crime" :
-                             categoriaUpper === "AVENTURA" ? "Aventura" :
-                             categoriaUpper === "SUSPENSE" ? "Suspense" :
-                             categoriaUpper === "TERROR" ? "Terror" :
-                             categoriaUpper === "FANTASIA" ? "Fantasia" :
-                             categoria;
+  const categoriaFormatada =
+    categoriaUpper === "ACAO"
+      ? "AÇÃO"
+      : categoriaUpper === "COMEDIA"
+      ? "COMÉDIA"
+      : categoriaUpper === "ROMANCE"
+      ? "ROMANCE"
+      : categoriaUpper === "DRAMA"
+      ? "DRAMA"
+      : categoriaUpper === "CRIME"
+      ? "CRIME"
+      : categoriaUpper === "AVENTURA"
+      ? "AVENTURA"
+      : categoriaUpper === "SUSPENSE"
+      ? "SUSPENSE"
+      : categoriaUpper === "TERROR"
+      ? "TERROR"
+      : categoriaUpper === "FANTASIA"
+      ? "FANTASIA"
+      : categoria;
 
   return (
-    <section>
-      <div className={`${styles.container_descricao}`}>
-        <button onClick={() => navigate("/")}>VOLTAR</button>
-        <p>CATEGORIA: {categoriaFormatada}</p>
+    <section className={`${styles.container}`}>
+      <div className={`${styles.container__descricao}`}>
+        <button
+          className={`${styles.container__descricao__botao}`}
+          onClick={() => navigate("/")}
+        >
+          VOLTAR
+        </button>
+        <p className={`${styles.container__descricao__categoria}`}>CATEGORIA: <span>{categoriaFormatada}</span></p>
       </div>
       <div className={`${styles.container_filme}`}>
         {filmesCategoria.map((filme) => (

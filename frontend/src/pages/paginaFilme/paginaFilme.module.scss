@@ -1,0 +1,88 @@
+@use "../../style/abstract/media-queries" as mediaQuerry;
+@use "../../style/abstract/variaveis";
+@use "../../style/abstract/mixins";
+
+.botao {
+  background-color: variaveis.$cor-azul-escuro;
+  color: variaveis.$cor-branco-claro;
+  border: none;
+  padding: 1rem;
+  margin-left: 3rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.container {
+  display: flex;
+  background-color: variaveis.$cor-branco-medio;
+  margin: 1rem;
+  border-radius: 15px;
+  gap: 2rem;
+
+  &__descricao {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+
+    @media #{mediaQuerry.$desktop-full} {
+      flex-direction: column;
+    }
+    
+
+    &__filme {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem;
+      gap: 1rem;
+      flex-direction: column;
+
+      @media #{mediaQuerry.$tablet}, #{mediaQuerry.$desktop-low}, #{mediaQuerry.$desktop-full}, #{mediaQuerry.$desktop-large} {
+        flex-direction: row;
+      }
+
+      @media #{mediaQuerry.$desktop-full} {
+        width: 70%;
+      }
+
+      &__img {
+        width: 200px;
+        border: 0.3rem solid variaveis.$cor-azul-escuro;
+        border-radius: 0.8rem;
+
+        @media #{mediaQuerry.$tablet} {
+          width: 250px;
+        }
+
+        @media #{mediaQuerry.$desktop-full}, #{mediaQuerry.$desktop-large} {
+          width: 350px;
+        }
+        
+
+      }
+
+      &__texto {
+        font-size: 1.2rem;
+        text-align: left;
+
+        @media #{mediaQuerry.$desktop-low}, #{mediaQuerry.$desktop-full} {
+          font-size: 1.4rem;
+        }
+
+        @media #{mediaQuerry.$desktop-full} {
+          font-size: 1.4rem;                                                                                                                    
+        }
+        
+        @media #{mediaQuerry.$desktop-large} {
+          font-size: 1.5rem;                                                                                                                    
+          width: 40%;
+        }
+      }
+    }
+  }
+}
+

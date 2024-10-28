@@ -1,4 +1,4 @@
-@import "style/_variaveis.css";
+
 
 html,
 body,
@@ -139,7 +139,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background: url("./img/logo2.png") no-repeat top; */
   background-image: url("./assets/fundo1.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -150,3 +149,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  // Garante que a página tenha no mínimo a altura da tela
+}
+
+.main-content {
+  flex-grow: 1;  // Faz com que o conteúdo principal ocupe o espaço disponível
+}
+
+
